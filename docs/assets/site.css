@@ -1,0 +1,347 @@
+:root {
+  color-scheme: light;
+  --ink: #172126;
+  --muted: #536168;
+  --paper: #f4f6f9;
+  --surface: #ffffff;
+  --line: #dde3ea;
+  /* Taken from the app icon: #062044 is its background, #2989f1 its wordmark.
+     The wordmark blue is darkened for text because at full strength it only
+     reaches 3.5:1 against white, short of the 4.5:1 needed to read well. */
+  --blue: #1d62ad;
+  --blue-dark: #062044;
+  --blue-soft: #e8eef8;
+  --amber: #f2bd57;
+  --shadow: 0 18px 50px rgba(6, 32, 68, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(242, 189, 87, 0.18), transparent 25rem),
+    var(--paper);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 17px;
+  line-height: 1.68;
+}
+
+a {
+  color: var(--blue-dark);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--blue);
+}
+
+.shell {
+  width: min(100% - 2rem, 74rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(220, 227, 223, 0.8);
+  background: rgba(245, 247, 244, 0.9);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  min-height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--ink);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 2.25rem;
+  aspect-ratio: 1;
+  /* The app's own icon, with the corners rounded here because the web applies
+     no mask of its own. The url is resolved against this stylesheet, so every
+     page picks it up whatever depth it sits at. */
+  background: url("driver-focus-mark.png") center / contain no-repeat;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.94rem;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.nav-links a[aria-current="page"],
+.nav-links a:hover {
+  color: var(--blue-dark);
+}
+
+main {
+  padding: 5rem 0 6rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  min-height: 31rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.16;
+  letter-spacing: -0.035em;
+}
+
+h1 {
+  max-width: 14ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+}
+
+h2 {
+  margin: 3rem 0 0.8rem;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.08rem;
+}
+
+.lede {
+  max-width: 42rem;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.65rem 1.05rem;
+  border: 1px solid var(--blue-dark);
+  border-radius: 0.75rem;
+  background: var(--blue-dark);
+  color: white;
+  font-weight: 720;
+  text-decoration: none;
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--blue-dark);
+}
+
+.signal-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 22rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  background: var(--blue-dark);
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.signal-card::after {
+  content: "";
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  right: -7rem;
+  bottom: -8rem;
+  border: 2.8rem solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.signal-label {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.signal-status {
+  margin-top: 3rem;
+  font-size: 2.5rem;
+  font-weight: 780;
+  letter-spacing: -0.04em;
+}
+
+.signal-line {
+  width: 3.5rem;
+  height: 0.45rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  background: var(--amber);
+}
+
+.signal-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 16rem;
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.content {
+  width: min(100%, 48rem);
+}
+
+.content h1 {
+  max-width: 18ch;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.meta {
+  margin: 0.6rem 0 2.2rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.notice,
+.contact-card,
+.faq-item {
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface);
+}
+
+.notice {
+  margin: 2rem 0;
+  border-left: 0.35rem solid var(--amber);
+}
+
+.contact-card {
+  margin: 2rem 0 2.5rem;
+  box-shadow: var(--shadow);
+}
+
+.contact-card p {
+  margin: 0.4rem 0 0;
+}
+
+.faq {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+ul,
+ol {
+  padding-left: 1.35rem;
+}
+
+li + li {
+  margin-top: 0.45rem;
+}
+
+.page-footer {
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 16px;
+  }
+
+  .nav {
+    min-height: 4rem;
+  }
+
+  .nav-links {
+    gap: 0.75rem;
+  }
+
+  main {
+    padding-top: 3rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .signal-card {
+    min-height: 18rem;
+  }
+
+  .footer-row {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
